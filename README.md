@@ -109,10 +109,10 @@ git clone git@github.com:srmeier/microk8s-kubeflow-ibm-cloud.git
  
 ```sh
 dvc init
-dvc remote modify origin endpointurl https://s3.us-east.cloud-object-storage.appdomain.cloud
 dvc remote add origin s3://<bucket_name>/
+dvc remote modify origin endpointurl https://s3.us-east.cloud-object-storage.appdomain.cloud
 dvc add countries.csv
-dvc push
+dvc push -r origin
 ```
 
 And there you have it! A decent initial project setup to start playing around with.
