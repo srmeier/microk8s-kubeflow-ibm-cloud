@@ -24,3 +24,11 @@ microk8s.enable kubeflow
 ```
 
 This might take a little while.
+
+Once Kubeflow is finished deploying you will be able to access the login page by going to: `<ip-address>.xip.io`. From here login with username "admin" and use the password which you specified during the installation process. The next thing we'll want to do is write a Dockerfile which we can use to deploy a simple Jupyter notebook server.
+
+### Build a Jupyter Hub Docker Image
+
+The Dockerfile I will be using to build the image is present in the repo, `DockerfileJupyter`. I would not recommend putting any credientials within this Dockerfile. Instead we will later create Kubernetes secrets and inject these secrets into the Jupyter pod using Kubeflow's pod defaults. Here we will inject a GitHub SSH key and credientials for accessing IBM's cloud object storage.
+
+In this tutorial we'll use [Docker Hub](https://hub.docker.com/) to store our Docker image. Depending on what you plan to put in your image you may want to create a customer image repository. To push the image to Docker Hub let's first build the image locally and push the image to Docker Hub. Once in Docker Hub we can reference this image when building our Jupyter notebook using Kubeflow.
