@@ -40,3 +40,5 @@ docker login
 docker build -f DockerfileJupyter -t <username>/kubeflow-notebook-img
 docker push <username>/kubeflow-notebook-img
 ```
+
+[WIP]
