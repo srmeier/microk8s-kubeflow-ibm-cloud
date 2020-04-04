@@ -1,0 +1,10 @@
+FROM jupyter/datascience-notebook
+
+USER root
+RUN apt-get update && apt-get install -y openssh-client
+
+USER $NB_USER
+ENV NB_PREFIX /
+ENV JUPYTER_ENABLE_LAB yes
+
+CMD ["sh", "-c", "start-notebook.sh --notebook-dir=/home/jovyan --ip=0.0.0.0 --no-browser --allow-root --port=8888 --NotebookApp.token='' --NotebookApp.password='' --NotebookApp.allow_origin='*' --NotebookApp.base_url=$NB_PREFIX"]
