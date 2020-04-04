@@ -43,6 +43,8 @@ docker build -f DockerfileJupyter -t <username>/kubeflow-notebook-img
 docker push <username>/kubeflow-notebook-img
 ```
 
-Now we have the Docker image ready that we will use to launch our Jupyter notebook from inside Kubeflow. However, before we do that let's setup our SSH Github secret and Cloud Object Storage secret.
+Now we have the Docker image ready that we will use to launch our Jupyter notebook from inside Kubeflow. If you aren't planning to use cloud object storage or Git to store your notebooks you can stop here and start making use of Kubeflow!
+
+### Creating Github & Cloud Object Storage Secrets
 
 [WIP]
