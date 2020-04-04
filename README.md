@@ -47,4 +47,12 @@ Now we have the Docker image ready that we will use to launch our Jupyter notebo
 
 ### Creating Github & Cloud Object Storage Secrets
 
-[WIP]
+In order to inject the SSH keys into our Jupyter notebook pod we will need to create a Kuberenetes secret and Kubeflow PodDefault. We will do a similar step for injecting our cloud storage creds as well.
+
+To create the SSH secret first place the RSA keys on your VM by connecting over FTP. Once these files are on your server (can place them in the root directory) run the following command.
+
+```sh
+kubectl create secret generic kf-ssh-secret --from-file=id_rsa=/root/id_rsa --from-file=id_rsa.pub=/root/id_rsa.pub --from-file=known_hosts=/root/known_hosts -n admin
+```
+
+If you currently do not have SSH files on your local machine you use to access GitHub you can create them by following this [tutorial](https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh). Make sure this secret is created in the namespace of the user you plan to give access to it (i.e. here we assume that's the `admin` user).
