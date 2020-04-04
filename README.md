@@ -105,5 +105,14 @@ git clone git@github.com:srmeier/microk8s-kubeflow-ibm-cloud.git
  
  ### Saving Data & Results to COS
  
+ After running the notebook you should have a file called `countries.csv`. Let's push this file into the object storage we created using the commands below.
  
- 
+```sh
+dvc init
+dvc remote modify origin endpointurl https://s3.us-east.cloud-object-storage.appdomain.cloud
+dvc remote add origin s3://<bucket_name>/
+dvc add countries.csv
+dvc push
+```
+
+And there you have it! A decent initial project setup to start playing around with.
