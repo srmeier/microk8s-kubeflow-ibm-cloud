@@ -36,9 +36,11 @@ In this tutorial we'll use [Docker Hub](https://hub.docker.com/) to store our Do
 Create an account on Docker Hub and run the commands below to build and push your image. Just to emphasize, _do not push your image to Docker Hub if it contains sensitive information_. Also, in the code below replace `<username>` with the username for your Docker Hub account.
 
 ```sh
-docker login
+docker login -u <username>
 docker build -f DockerfileJupyter -t <username>/kubeflow-notebook-img
 docker push <username>/kubeflow-notebook-img
 ```
+
+Now we have the Docker image ready that we will use to launch our Jupyter notebook from inside Kubeflow. However, before we do that let's setup our SSH Github secret and Cloud Object Storage secret.
 
 [WIP]
