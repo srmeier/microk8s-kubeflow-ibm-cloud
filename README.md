@@ -95,3 +95,15 @@ ssh-add ~/.ssh/id_rsa
 ```
 
 > :warning: **Secrets not being injected**: When using Microk8s I've noticed that sometimes the kuberenetes secrets are not injected properly when creating the Jupyter notebook's pod. If this happens you can manually upload the SSH keys and environmental variables.
+
+Once SSH is up and running clone this repo and open the `dvc_test` Jupyter notebook.
+
+```sd
+git clone git@github.com:srmeier/microk8s-kubeflow-ibm-cloud.git
+```
+ Run all the cells to download the data and generate a result.
+ 
+ ### Saving Data & Results to COS
+ 
+ 
+ 
