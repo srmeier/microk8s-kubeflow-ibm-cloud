@@ -1,0 +1,18 @@
+apiVersion: "kubeflow.org/v1alpha1"
+kind: PodDefault
+metadata:
+  name: add-github-secret
+  namespace: admin
+spec:
+  selector:
+    matchLabels:
+      add-github-secret: "true"
+  desc: "Include GitHub SSH Keys"
+  volumeMounts:
+    - name: ssh-key-volume
+      mountPath: /home/jovyan/.ssh
+      readOnly: false
+  volumes:
+    - name: ssh-key-volume
+      secret:
+        secretName: kf-ssh-secret

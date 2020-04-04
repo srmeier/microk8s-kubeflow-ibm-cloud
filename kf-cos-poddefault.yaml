@@ -1,0 +1,21 @@
+apiVersion: "kubeflow.org/v1alpha1"
+kind: PodDefault
+metadata:
+  name: add-cos-secret
+  namespace: admin
+spec:
+  selector:
+    matchLabels:
+      add-mysql-secret: "true"
+  desc: "Include COS Creds"
+  env:
+  - name: AWS_ACCESS_KEY_ID
+    valueFrom:
+      secretKeyRef:
+        name: kf-cos-secret
+        key: access_key_id
+  - name: AWS_SECRET_ACCESS_KEY
+    valueFrom:
+      secretKeyRef:
+        name: kf-cos-secret
+        key: secret_access_key
