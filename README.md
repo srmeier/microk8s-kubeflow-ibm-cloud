@@ -49,10 +49,16 @@ Now we have the Docker image ready that we will use to launch our Jupyter notebo
 
 In order to inject the SSH keys into our Jupyter notebook pod we will need to create a Kuberenetes secret and Kubeflow PodDefault. We will do a similar step for injecting our cloud storage creds as well.
 
+#### Github SSH Secrets
+
 To create the SSH secret first place the RSA keys on your VM by connecting over FTP. Once these files are on your server (can place them in the root directory) run the following command.
 
 ```sh
-kubectl create secret generic kf-ssh-secret --from-file=id_rsa=/root/id_rsa --from-file=id_rsa.pub=/root/id_rsa.pub --from-file=known_hosts=/root/known_hosts -n admin
+microk8s.kubectl create secret generic kf-ssh-secret --from-file=id_rsa=/root/id_rsa --from-file=id_rsa.pub=/root/id_rsa.pub --from-file=known_hosts=/root/known_hosts -n admin
 ```
 
-If you currently do not have SSH files on your local machine you use to access GitHub you can create them by following this [tutorial](https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh). Make sure this secret is created in the namespace of the user you plan to give access to it (i.e. here we assume that's the `admin` user).
+If you currently do not have SSH files on your local machine you use to access GitHub you can create them by following this [tutorial](https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh). Make sure this secret is created in the namespace of the user you plan to give access to it (i.e. here we assume that's the `admin` user). Once you have created the secret be sure to _delete_ the SSH key files from your root directory.
+
+#### Cloud Object Storage Secrets
+
+If you don't already have an IBM Cloud Object Storage service setup go ahead and create one. Next create a new standard bucket, name it something reasonable, and pay attention to the location where this bucket will be created (`us-east` in my case). The default service credientials they create for you are no good because we require HMAC creds. Create a new service crediential with HMAC enabled. View these credentials after they have been created and write down the `access_key_id` & `secret_access_key`. These are the variables we will save as a new secret within our Microk8s cluster.
