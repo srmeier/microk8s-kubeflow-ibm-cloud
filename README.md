@@ -115,4 +115,4 @@ dvc add countries.csv
 dvc push -r origin
 ```
 
-And there you have it! A decent initial project setup to start playing around with.
+And there you have it! A decent initial project setup to start playing around with. Also, feel free to push all the DVC related files into Github. This is intended and allows DVC to reference files that are in object storage.
