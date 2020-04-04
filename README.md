@@ -90,6 +90,7 @@ Once your notebook is up and running open a terminal shell from the Jupyter Lab 
 
 ```sh
 eval $(ssh-agent -s)
+chmod 600 ~/.ssh/id_rsa
 ssh-add ~/.ssh/id_rsa
 ```
 
