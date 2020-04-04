@@ -68,3 +68,14 @@ Update the `kf-cos-secret.yaml` file found in this repo with the `access_key_id`
 ```sh
 microk8s.kubectl apply -f kf-cos-secret.yaml
 ```
+
+### Deploying PodDefaults
+
+To automatically inject the secrets into the Jupyter notebook pod we must next create PodDefaults. Run the following commands to create these PodDefaults in the `admin` namespace.
+
+```sh
+microk8s.kubectl apply -f kf-ssh-poddefault.yaml
+microk8s.kubectl apply -f kf-cos-poddefault.yaml
+```
+
+The YAMLs above can be found in this repo.
