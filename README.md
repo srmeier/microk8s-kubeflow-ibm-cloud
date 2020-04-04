@@ -6,6 +6,8 @@
 
 I recommend getting a public, multi-tenant, variable compute, 4vCPU / 8GB RAM Ubuntu 18.04 LTS VM with 100GB SAN boot disk. Also be sure to select hourly billing (in case you don't need it for the full month they won't keep charging you). In total this will come to about $0.10 per hour (or about $70 a month). Be sure to grab the IP address & password for the VM once it's up and running. The IP address can be found on the "monitoring" tab on the left and the password can be found under the "password" tab.
 
+> :warning: **Using variable compute**: One thing I've noticed is that with 4vCPU / 8GB RAM appears to be right at the limit for running Microk8s + Kubeflow. If possible I would go for a bit more compute. Otherwise, if the website becomes unresponsive reboot the VM and it should fix the issue.
+
 ### Install Microk8s & Kubeflow
 
 Once your VM is up and running SSH into it and running the following commands and be sure to replace `<ip-address>` with the IP for your VM and `<kf-admin-password>` with whatever you want the admin password to be for your Kubeflow cluster.
