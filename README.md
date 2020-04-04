@@ -6,7 +6,7 @@
 
 I recommend getting a public, multi-tenant, variable compute, 4vCPU / 8GB RAM Ubuntu 18.04 LTS VM with 100GB SAN boot disk. Also be sure to select hourly billing (in case you don't need it for the full month they won't keep charging you). In total this will come to about $0.10 per hour (or about $70 a month). Be sure to grab the IP address & password for the VM once it's up and running. The IP address can be found on the "monitoring" tab on the left and the password can be found under the "password" tab.
 
-> :warning: **Using variable compute**: One thing I've noticed is that with 4vCPU / 8GB RAM appears to be right at the limit for running Microk8s + Kubeflow. If possible I would go for a bit more compute. Otherwise, if the website becomes unresponsive reboot the VM and it should fix the issue.
+> :warning: **Using variable compute**: One thing I've noticed is that with 4vCPU / 8GB RAM appears to be right at the limit for running Microk8s + Kubeflow. If possible I would go for a bit more compute. Otherwise, if the website becomes unresponsive reboot the VM and it should fix the issue. If you plan on running any sort of workload I _highly_ recommend provisioning a larger VM.
 
 ### Install Microk8s & Kubeflow
 
@@ -79,3 +79,9 @@ microk8s.kubectl apply -f kf-cos-poddefault.yaml
 ```
 
 The YAMLs above can be found in this repo.
+
+### Creating our Jupyter Notebook Server
+
+Now we are ready to create out Jupyter notebook server. Make sure to use the custom Jupyter notebook image we created before, mine is `docker.io/srmeier/kubeflow-notebook-img`. You will also see now in the configuation section the ability to add our two PodDefaults. Let's do that.
+
+![m8s_pic_02](https://stephenmeier.net/files/pics/m8s_pic_02.png)
