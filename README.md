@@ -84,7 +84,7 @@ The YAMLs above can be found in this repo.
 
 Now we are ready to create out Jupyter notebook server. Make sure to use the custom Jupyter notebook image we created before, mine is `docker.io/srmeier/kubeflow-notebook-img`. You will also see now in the configuation section the ability to add our two PodDefaults. Let's do that.
 
-![m8s_pic_02](https://stephenmeier.net/files/pics/m8s_pic_02.png)
+![m8s_pic_02](https://stephenmeiernet.files.wordpress.com/2020/05/m8s_pic_02.png)
 
 Once your notebook is up and running open a terminal shell from the Jupyter Lab interface and run the following lines to finish setting up GitHub SSH.
 
